@@ -49,7 +49,7 @@ metadata:
   name: yapi-ingress
 spec:
   rules:
-  - host: yapi.thinkenergy.def
+  - host: yapi.xxxx.def
     http:
       paths:
       - path: /
