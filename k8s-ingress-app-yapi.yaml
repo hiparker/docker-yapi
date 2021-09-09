@@ -1,0 +1,59 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: yapi-app-deploy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: yapi-app-deploy
+    spec:
+      imagePullSecrets:
+        - name: ali-token
+      containers:
+        - name: yapi-app-deploy
+          image: registry.cn-beijing.aliyuncs.com/thinkenergy/yapi:1.9.3
+          #imagePullPolicy: Always # 每次都拉去镜像 
+          args: ["server/app.js"]
+          resources:
+            requests:
+              cpu: 1
+              memory: 2048Mi
+            limits:
+              cpu: 2
+              memory: 3072Mi
+          ports:
+            - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: yapi-app-service
+  labels:
+    app: yapi-app-service
+spec:
+  selector:
+    app: yapi-app-deploy
+  ports:
+    - port: 3000
+      targetPort: 3000
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: yapi-ingress
+spec:
+  rules:
+  - host: yapi.thinkenergy.def
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: yapi-app-service
+          servicePort: 3000
+
