@@ -2,11 +2,11 @@
     "port": "3000",
     "adminAccount": "meet.parker@foxmail.com",
     "db": {
-       "servername": "10.0.0.28",
-       "DATABASE": "think",
+       "servername": "xxx.xxx.xxx.xxx",
+       "DATABASE": "数据库名",
        "port": "27017",
-       "user": "think",
-       "pass": "p@ssw0rd"
+       "user": "账号",
+       "pass": "密码"
     },
     "mail": {
        "enable": false,
