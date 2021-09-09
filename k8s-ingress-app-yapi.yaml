@@ -13,7 +13,7 @@ spec:
         - name: ali-token
       containers:
         - name: yapi-app-deploy
-          image: registry.cn-beijing.aliyuncs.com/thinkenergy/yapi:1.9.3
+          image: registry.cn-beijing.aliyuncs.com/xxxxx/yapi:1.9.3
           #imagePullPolicy: Always # 每次都拉去镜像 
           args: ["server/app.js"]
           resources:
